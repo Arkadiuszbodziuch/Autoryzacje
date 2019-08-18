@@ -1,1 +1,0 @@
-select * from Platform.user_role insert values
