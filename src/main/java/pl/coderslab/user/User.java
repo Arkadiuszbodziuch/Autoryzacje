@@ -1,98 +1,81 @@
 package pl.coderslab.user;
 
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
-import pl.coderslab.cfm.Cfm;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.List;
+
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Entity
-@Table(name = "users")
-public class User {
+    @Table(name = "users")
+    public class User {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
+       // @NotEmpty
+        @Email
+        private String email;
+        //@NotEmpty
+        private String firstName;
+        //@NotEmpty
+        private String lastName;
+        //@NotEmpty
+        private String password;
+        private int active;
+        @ManyToMany(cascade = CascadeType.REMOVE)
+        @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+        private Set<Role> role;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @NotBlank
-    private String username;
-
-    @NotBlank
-    private String firstName;
-
-    @NotBlank
-    private String lastName;
-
-    @NotBlank
-    private String password;
-
-    @NotNull
-    @ColumnDefault("1")
-    private int enabled;
-
-    @Email
-    @NotBlank
-    private String email;
+        //
 
 
+        public Long getId() { return id; }
 
-    @Transient
-    private String fullName;
+        public void setId(Long id) { this.id = id; }
 
-    public String getFullName() {
-        return firstName + " " + lastName;
+        public String getEmail() { return email; }
+
+        public void setEmail(String email) { this.email = email; }
+
+        public String getFirstName() { return firstName; }
+
+        public void setFirstName(String firstName) { this.firstName = firstName; }
+
+        public String getLastName() { return lastName; }
+
+        public void setLastName(String lastName) { this.lastName = lastName; }
+
+        public String getPassword() { return password; }
+
+        public void setPassword(String password) { this.password = password; }
+
+        public int getActive() { return active; }
+
+        public void setActive(int active) { this.active = active; }
+
+    public Set<Role> getRole() {
+        return role;
     }
 
-    public Long getId() {
-        return id;
+    public void setRole(Set<Role> role) {
+        this.role = role;
+    }
+        @Override
+        public String toString() {
+            return "User{" +
+                    "id=" + id +
+                    ", email='" + email + '\'' +
+                    ", firstName='" + firstName + '\'' +
+                    ", lastName='" + lastName + '\'' +
+                    ", password='" + password + '\'' +
+                    ", active=" + active +
+                    ", role=" + role +
+                    '}';
+        }
+
+
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getUsername() { return username; }
-
-    public void setUsername(String username) { this.username = username; }
-
-    public String getPassword() { return password; }
-
-    public void setPassword(String password) { this.password = password; }
-
-    public int getEnabled() { return enabled; }
-
-    public void setEnabled(int enabled) { this.enabled = enabled; }
-
-
-}

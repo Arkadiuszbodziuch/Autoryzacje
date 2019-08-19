@@ -1,49 +1,75 @@
 package pl.coderslab.app;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.crypto.password.StandardPasswordEncoder;
 
 
-@Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-
-    @Autowired
-    private DataSource dataSource;
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("select username, password, enabled from users where username=?")
-                .authoritiesByUsernameQuery("select username, role from user_role where username=?");
-//        auth.inMemoryAuthentication().withUser("user").password("{noop}123456").roles("USER");
-//        auth.inMemoryAuthentication().withUser("admin").password("123456").roles("ADMIN");
-//        auth.inMemoryAuthentication().withUser("dba").password("123456").roles("DBA");
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-               // .antMatchers("/").permitAll()
-              //  .antMatchers("/user/*").permitAll()
-                .antMatchers("/user/**").access("hasRole('ROLE_USER')")
-                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/dba/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_DBA')")
-                .and().formLogin();
-//        http.logout();
+        http.
+                authorizeRequests()
+                .antMatchers("/resources/**").permitAll()
+                //do usuniecia
+//                .antMatchers("/**").permitAll()
+                .antMatchers("/myregistration").permitAll()
+                .antMatchers("/mylogin?success").permitAll()
+                .antMatchers("/mylogin").permitAll()
+                .antMatchers("/app").permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/mylogin").permitAll()
+                .passwordParameter("password")
+                .usernameParameter("email")
+                .and()
+                .httpBasic()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/mylogin?logout").permitAll()
+                .and()
+                .rememberMe().key("secret-key").rememberMeParameter("rememberMe").tokenValiditySeconds(3600);
     }
+
+
+    @Bean(name = "dataSource")
+    public DriverManagerDataSource dataSource() {
+        DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
+        driverManagerDataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        driverManagerDataSource.setUrl("jdbc:mysql://localhost:3306/Platform?serverTimezone=UTC");
+        driverManagerDataSource.setUsername("root");
+        driverManagerDataSource.setPassword("zaq12wsx");
+        return driverManagerDataSource;
+    }
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return bCryptPasswordEncoder;
+    }
+
+    @Autowired
+    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+
+        auth
+                .jdbcAuthentication()
+                .dataSource(dataSource())
+                .usersByUsernameQuery(
+                        "select email, password, active from users where email=?")
+                .authoritiesByUsernameQuery(
+                        "select u.email, r.role from users u inner join user_role ur on(u.id=ur.user_id) inner join roles r on(ur.role_id=r.id) where u.email=?")
+                .passwordEncoder(passwordEncoder());
+    }
+
+
 }
