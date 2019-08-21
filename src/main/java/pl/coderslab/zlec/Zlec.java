@@ -25,7 +25,7 @@ public class Zlec {
     private String numberFV;
     @ManyToOne
     private Car car;
-@ElementCollection
+    @ElementCollection
 //    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 //    @JoinTable(name = "zlec_actions", joinColumns = @JoinColumn(name = "zlec_id"), inverseJoinColumns = @JoinColumn(name = "actions_id"))
     private List<String> actions;

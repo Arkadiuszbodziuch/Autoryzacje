@@ -21,7 +21,7 @@ DUpa
     <br><br>
 
 
-    <form:select path="actions" items="${actions}" >
+    <form:select path="actionsSet" items="${actionsSet}" >
 
     </form:select>
 

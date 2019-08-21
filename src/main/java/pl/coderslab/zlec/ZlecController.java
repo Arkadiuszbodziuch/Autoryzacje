@@ -40,9 +40,9 @@ public class ZlecController {
 
 
     @PostMapping ("/add")
-        public String addZlec (@ModelAttribute Zlec zlec,
-                               @RequestParam String string,
-                               Model model) {
+    public String addZlec (@ModelAttribute Zlec zlec,
+                           @RequestParam String string,
+                           Model model) {
 
         Car car = carRepository.findByRegistrationNumber(string);
         if (car!=null){
@@ -51,32 +51,32 @@ public class ZlecController {
             zlecRepostiory.save(zlec);
             model.addAttribute("zlecM", zlec);
         }
-            return "redirect:/zlec/addActions";
-        }
+        return "redirect:/zlec/addActions";
+    }
 
-        @GetMapping("/addActions")
-        public String addActions (Model model, HttpSession ses){
-            Zlec zlec = (Zlec) ses.getAttribute("zlecM");
-            model.addAttribute("zlec", zlec);
+    @GetMapping("/addActions")
+    public String addActions (Model model, HttpSession ses){
+        Zlec zlec = (Zlec) ses.getAttribute("zlecM");
+        model.addAttribute("zlec", zlec);
 
 
 //            List<Actions> actionsSet = new ArrayList<>();
 //            actionsSet.add(actionsRepository.getOne(1l));
 //            zlec.setActions(actionsSet);
-            zlecRepostiory.save(zlec);
+        zlecRepostiory.save(zlec);
 
 
 
 
-          //  user.setRole(new HashSet<Role>(Arrays.asList(userRole)));
+        //  user.setRole(new HashSet<Role>(Arrays.asList(userRole)));
 
 
-            return "addActions";
+        return "addActions";
 
-        }
+    }
 
-        @PostMapping("/addActions")
-        public  String addActions1(){
+    @PostMapping("/addActions")
+    public  String addActions1(){
 
         return"sucess";
 
@@ -107,12 +107,12 @@ public class ZlecController {
         }*/
 
 
-        @GetMapping("/all")
-        public String getAllZlecs (Model model){
-            List<Zlec> zlecList = zlecRepostiory.findAll();
-            model.addAttribute("zlecList", zlecList);
-            return "zlecList";
-        }
-
-
+    @GetMapping("/all")
+    public String getAllZlecs (Model model){
+        List<Zlec> zlecList = zlecRepostiory.findAll();
+        model.addAttribute("zlecList", zlecList);
+        return "zlecList";
     }
+
+
+}
