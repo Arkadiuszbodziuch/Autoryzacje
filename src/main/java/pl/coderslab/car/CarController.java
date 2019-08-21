@@ -1,23 +1,19 @@
 package pl.coderslab.car;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.coderslab.cfm.Cfm;
-import pl.coderslab.user.User;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequestMapping("/user/car")
 public class CarController {
 
         @Autowired
-        carRepository carRepository;
+        CarRepository carRepository;
 
         @GetMapping("/add")
         public String show(Model model) {
@@ -28,6 +24,12 @@ public class CarController {
         @PostMapping("/add")
         public String add(@ModelAttribute Car Car, BindingResult result) {
             Car.setEnabled(1);
+            Car.setRegistrationNumber(Car.getRegistrationNumber().toUpperCase());
+
+            // reszta to upper case
+
+
+
             carRepository.save(Car);
             return "redirect:all";
         }

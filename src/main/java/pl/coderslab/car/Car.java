@@ -42,4 +42,19 @@ public class Car {
     public void setRegistrationNumber(String registrationNumber) { this.registrationNumber = registrationNumber; }
     public Long getNip() { return nip; }
     public void setNip(Long nip) { this.nip = nip; }
+
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", vin='" + vin + '\'' +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", course=" + course +
+                ", registrationNumber='" + registrationNumber + '\'' +
+                ", nip=" + nip +
+                ", enabled=" + enabled +
+                '}';
+    }
 }

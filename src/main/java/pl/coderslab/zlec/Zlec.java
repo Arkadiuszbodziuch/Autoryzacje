@@ -1,9 +1,13 @@
 package pl.coderslab.zlec;
 
 
+import org.springframework.data.repository.cdi.Eager;
 import pl.coderslab.acctions.Actions;
+import pl.coderslab.car.Car;
+import pl.coderslab.price.Price;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 
@@ -19,62 +23,65 @@ public class Zlec {
 
     private String numberDMS;
     private String numberFV;
+    @ManyToOne
+    private Car car;
+@ElementCollection
+//    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+//    @JoinTable(name = "zlec_actions", joinColumns = @JoinColumn(name = "zlec_id"), inverseJoinColumns = @JoinColumn(name = "actions_id"))
+    private List<String> actions;
 
-    private Long nip_CFM;
-    private Long nip_Serwis;
-    private String registrationNumber;
-    private String Vin;
-    private String brand;
-    private String course;
-    private String numberAut;
+    /*@ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "zlec_actions_price", joinColumns = @JoinColumn(name = "zlec_id"), inverseJoinColumns = @JoinColumn(name = "actions_id"))
+    private List<Price> prices;*/
 
+    public Long getId() {
+        return id;
+    }
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "zlec_actions", joinColumns = @JoinColumn(name = "zlec_id"), inverseJoinColumns = @JoinColumn(name = "actions_id"))
-    private Set<Actions> actions;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public String getNumberDMS() {
+        return numberDMS;
+    }
 
-    public Long getId() { return id; }
+    public void setNumberDMS(String numberDMS) {
+        this.numberDMS = numberDMS;
+    }
 
-    public void setId(Long id) { this.id = id; }
+    public String getNumberFV() {
+        return numberFV;
+    }
 
-    public String getNumberDMS() { return numberDMS; }
+    public void setNumberFV(String numberFV) {
+        this.numberFV = numberFV;
+    }
 
-    public void setNumberDMS(String numberDMS) { this.numberDMS = numberDMS; }
+    public Car getCar() {
+        return car;
+    }
 
-    public String getNumberFV() { return numberFV; }
+    public void setCar(Car car) {
+        this.car = car;
+    }
 
-    public void setNumberFV(String numberFV) { this.numberFV = numberFV; }
+    public List<String> getActions() {
+        return actions;
+    }
 
-    public Long getNip_CFM() { return nip_CFM; }
+    public void setActions(List<String> actions) {
+        this.actions = actions;
+    }
 
-    public void setNip_CFM(Long nip_CFM) { this.nip_CFM = nip_CFM; }
-
-    public Long getNip_Serwis() { return nip_Serwis; }
-
-    public void setNip_Serwis(Long nip_Serwis) { this.nip_Serwis = nip_Serwis; }
-
-    public String getRegistrationNumber() { return registrationNumber; }
-
-    public void setRegistrationNumber(String registrationNumber) { this.registrationNumber = registrationNumber; }
-
-    public String getVin() { return Vin; }
-
-    public void setVin(String vin) { Vin = vin; }
-
-    public String getBrand() { return brand; }
-
-    public void setBrand(String brand) { this.brand = brand; }
-
-    public String getCourse() { return course; }
-
-    public void setCourse(String course) { this.course = course; }
-
-    public String getNumberAut() { return numberAut; }
-
-    public void setNumberAut(String numberAut) { this.numberAut = numberAut; }
-
-    public Set<Actions> getActions() { return actions; }
-
-    public void setActions(Set<Actions> actions) { this.actions = actions; }
+    @Override
+    public String toString() {
+        return "Zlec{" +
+                "id=" + id +
+                ", numberDMS='" + numberDMS + '\'' +
+                ", numberFV='" + numberFV + '\'' +
+                ", car=" + car +
+                ", actions=" + actions +
+                '}';
+    }
 }

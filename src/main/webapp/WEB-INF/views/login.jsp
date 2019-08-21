@@ -8,6 +8,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
+
 <html>
 <head>
     <title>Title</title>
@@ -18,7 +21,8 @@
 <div class="col-lg-3">
 
     <div style="margin-top: 150px">
-        <div style="margin-bottom: 40px" class="ml-xl-5">
+        <div style="margin-bottom: 40px" class="ml-xl-5" size="10">
+
             <img src="https://bcassetcdn.com/preview/logodraft/a6130a3e-4261-4aad-b1da-74c4fce9813f/logo/large.png?fillmode=clip">
         </div>
         <form method="post" action="/mylogin">

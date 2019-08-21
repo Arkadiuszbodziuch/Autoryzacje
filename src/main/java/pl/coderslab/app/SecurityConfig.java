@@ -17,13 +17,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.
-                authorizeRequests()
+                csrf().disable()
+                .authorizeRequests()
                 .antMatchers("/resources/**").permitAll()
                 //do usuniecia
-//                .antMatchers("/**").permitAll()
+                .antMatchers("/**").permitAll()
                 .antMatchers("/myregistration").permitAll()
                 .antMatchers("/mylogin?success").permitAll()
                 .antMatchers("/mylogin").permitAll()
+                .antMatchers("/zlec/search").permitAll()
                 .antMatchers("/app").permitAll()
                 .anyRequest()
                 .authenticated()
@@ -35,10 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .httpBasic()
                 .and()
-                .logout()
-                .logoutSuccessUrl("/mylogin?logout").permitAll()
-                .and()
-                .rememberMe().key("secret-key").rememberMeParameter("rememberMe").tokenValiditySeconds(3600);
+                .logout();
+
     }
 
 
