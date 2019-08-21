@@ -10,6 +10,7 @@ import pl.coderslab.car.CarRepository;
 
 import javax.servlet.http.HttpSession;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/zlec")
@@ -17,7 +18,6 @@ import java.util.*;
 public class ZlecController {
 
     private ActionsRepository actionsRepository;
-
     private ZlecRepostiory zlecRepostiory;
     private CarRepository carRepository;
 
@@ -55,26 +55,18 @@ public class ZlecController {
     }
 
     @GetMapping("/addActions")
-    public String addActions (Model model, HttpSession ses){
-        Zlec zlec = (Zlec) ses.getAttribute("zlecM");
-        model.addAttribute("zlec", zlec);
+    public String addActions (Model model, HttpSession ses) {
+        List<Actions> actionsEntities = actionsRepository.findAll();
+        List<String> actions = actionsEntities.stream().map(Actions::getName).collect(Collectors.toList());
 
 
-//            List<Actions> actionsSet = new ArrayList<>();
-//            actionsSet.add(actionsRepository.getOne(1l));
-//            zlec.setActions(actionsSet);
-        zlecRepostiory.save(zlec);
-
-
-
-
-        //  user.setRole(new HashSet<Role>(Arrays.asList(userRole)));
+        model.addAttribute("zlec", new Zlec());
+        model.addAttribute("actions", actions);
 
 
         return "addActions";
 
     }
-
     @PostMapping("/addActions")
     public  String addActions1(){
 
@@ -93,18 +85,6 @@ public class ZlecController {
     }
 
 
-
-
-
-
-
-
-   /* @PostMapping("/add")
-    public String addZlec (@ModelAttribute Zlec zlec){
-       // if (zlec.getRegistrationNumber().equals(carRepository.findAllByRegistrationnumber()))
-       // zlecRepostiory.save(zlec);
-        return "redirect:/zlec/all";
-        }*/
 
 
     @GetMapping("/all")
