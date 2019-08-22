@@ -29,17 +29,14 @@
     <form:input path="password" id="passwordId" type="text"/>
     <form:errors path="password" element="div"></form:errors>
     <br><br>
-    <label for="usernameID">User Name</label>
-    <form:input path="username" id="usernameID" type="text"/>
-    <form:errors path="username" element="div"></form:errors>
-    <br><br>
+
     <label for="id">ID</label>
     <form:input path="id" id="id" type="text"/>
     <form:errors path="id" element="div"></form:errors>
     <br><br>
-    <label for="enabled">enabled</label>
-    <form:input  path="enabled" id="enabled" type="number"/>
-    <form:errors path="enabled" element="div"></form:errors>
+    <label for="active">active</label>
+    <form:input  path="active" id="active" type="number"/>
+    <form:errors path="active" element="div"></form:errors>
     <input type="submit" value="Submit">
 </form:form>
 </body>

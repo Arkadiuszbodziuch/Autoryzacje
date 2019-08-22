@@ -66,6 +66,12 @@ public class HomeController {
         return "login";
     }
 
+    @RequestMapping("/404")
+    public String error404 () {
+
+        return "404";
+    }
+
     @GetMapping("/myregistration")
     public String registration(Model model) {
         model.addAttribute("user", new User());
@@ -90,44 +96,5 @@ public class HomeController {
     }
 
 
-    /*@GetMapping("/edit/{index}")
-    public String editOrder(@PathVariable("index") Long id,
-                            Model model) {
-        Order existOrder = orderDAO.findById(id);
-        model.addAttribute("order", existOrder);
-        return "addOrder";
-    }
 
-    @PostMapping("/edit/{index}")
-    public String editOrderProcess(@ModelAttribute Order order) {
-        orderRepository.save(order);
-        return "redirect:/";
-    }
-
-    @GetMapping("/finish/{index}")
-    public String finishOrder(@PathVariable("index") Long id) {
-        Order existOrder = orderDAO.findById(id);
-        existOrder.setFinish(true);
-        orderRepository.save(existOrder);
-        return "redirect:/";
-    }
-
-
-    @ModelAttribute("galvanicCoating")
-    public List<String> powloki() {
-        List<String> shell = new ArrayList<>();
-        shell.add("Anode");
-        shell.add("Hard anode");
-        shell.add("Galvanized");
-        shell.add("Without coating");
-        return shell;
-    }
-
-    @ModelAttribute("axies")
-    public List<String> axies() {
-        List<String> axies = new ArrayList<>();
-        axies.add("front");
-        axies.add("back");
-        return axies;
-    }*/
 }

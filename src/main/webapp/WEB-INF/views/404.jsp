@@ -1,17 +1,14 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%--
   Created by IntelliJ IDEA.
   User: arkadiusz
-  Date: 2019-08-14
-  Time: 01:03
+  Date: 2019-08-22
+  Time: 13:54
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+<html lang="en"><head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,15 +18,12 @@
 
     <title>APUD</title>
 
-    <!-- Custom fonts for this template -->
+    <!-- Custom fonts for this template-->
     <link href="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles for this template-->
     <link href="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/css/sb-admin-2.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this page -->
-    <link href="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -46,7 +40,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">APUD<sup>2</sup></div>
+            <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
         </a>
 
         <!-- Divider -->
@@ -67,7 +61,6 @@
             Interface
         </div>
 
-        <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
@@ -108,12 +101,12 @@
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <li class="nav-item active">
+            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Pages</span>
             </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Login Screens:</h6>
                     <a class="collapse-item" href="login.html">Login</a>
@@ -121,7 +114,7 @@
                     <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Other Pages:</h6>
-                    <a class="collapse-item" href="/404">404 Page</a>
+                    <a class="collapse-item active" href="404.html">404 Page</a>
                     <a class="collapse-item" href="blank.html">Blank Page</a>
                 </div>
             </div>
@@ -135,7 +128,7 @@
         </li>
 
         <!-- Nav Item - Tables -->
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link" href="tables.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Tables</span></a>
@@ -308,6 +301,7 @@
 
                     <div class="topbar-divider d-none d-sm-block"></div>
 
+                    <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
@@ -319,11 +313,11 @@
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Edit Profile
                             </a>
-                            <a class="dropdown-item" href="/404">
+                            <a class="dropdown-item" href="404.html">
                                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Settings
                             </a>
-                            <a class="dropdown-item" href="/404">
+                            <a class="dropdown-item" href="404.html">
                                 <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Activity Log
                             </a>
@@ -343,46 +337,12 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
-                <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">CAR</h1>
-                <p class="mb-4"> <a target="_blank" href="https://datatables.net"></a>.</p>
-
-                <!-- DataTales Example -->
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Car List & Info</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <tr>
-                                    <th>id</th>
-                                    <th>Registration Number</th>
-                                    <th>VIN</th>
-                                    <th>brand</th>
-                                    <th>model</th>
-                                    <th>course</th>
-                                    <th>enabled</th>
-                                </tr>
-                                <c:forEach var="car" items="${cars}">
-                                <tr>
-                                    <td>${car.id}</td>
-                                    <td>${car.registrationNumber}</td>
-                                    <td>${car.vin}</td>
-                                    <td>${car.brand}</td>
-                                    <td>${car.model}</td>
-                                    <td>${car.course}</td>
-                                    <td>${car.enabled}</td>
-                                    <td><a href="delete/${car.id}">Delete</a> </td>
-                                    <td><a href="edit/${car.id}">Edit</a> </td>
-                                </tr>
-                                </c:forEach>
-
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                <!-- 404 Error Text -->
+                <div class="text-center">
+                    <div class="error mx-auto" data-text="404">404</div>
+                    <p class="lead text-gray-800 mb-5">Page Not Found</p>
+                    <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
+                    <a href="index.html">← Back to Dashboard</a>
                 </div>
 
             </div>
@@ -395,7 +355,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2019</span>
+                    <span>Copyright © Your Website 2019</span>
                 </div>
             </div>
         </footer>
@@ -408,7 +368,7 @@
 <!-- End of Page Wrapper -->
 
 <!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
+<a class="scroll-to-top rounded" href="#page-top" style="display: inline;">
     <i class="fas fa-angle-up"></i>
 </a>
 
@@ -425,70 +385,23 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="/mylogin">Logout</a>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/vendor/jquery/jquery.min.js"></script>
+<script src="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
-
-<!-- Page level plugins -->
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="js/demo/datatables-demo.js"></script>
-
-</body>
-
-</html>
+<script src="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/js/sb-admin-2.min.js"></script>
 
 
 
 
-
-
-<%--
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-
-<table border="1">
-    <tr>
-        <th>id</th>
-        <th>vin</th>
-        <th>brand</th>
-        <th>model</th>
-        <th>course</th>
-        <th>enabled</th>
-    </tr>
-    <c:forEach var="car" items="${cars}">
-        <tr>
-            <td>${car.id}</td>
-            <td>${car.vin}</td>
-            <td>${car.brand}</td>
-            <td>${car.model}</td>
-            <td>${car.course}</td>
-            <td>${car.registrationNumber}</td>
-            <td>${car.enabled}</td>
-            <td>${car.nip}</td>
-            <td><a href="delete/${car.id}">Delete</a> </td>
-            <td><a href="edit/${car.id}">Edit</a> </td>
-        </tr>
-    </c:forEach>
-</table>
-
-
-</body>
-</html>--%>
+</body></html>

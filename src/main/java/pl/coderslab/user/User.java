@@ -59,6 +59,7 @@ import java.util.Set;
         return role;
     }
 
+
     public void setRole(Set<Role> role) {
         this.role = role;
     }

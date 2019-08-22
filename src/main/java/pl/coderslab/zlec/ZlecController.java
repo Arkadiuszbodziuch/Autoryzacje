@@ -1,7 +1,9 @@
 package pl.coderslab.zlec;
 
+import com.sun.tools.internal.ws.wsdl.document.soap.SOAPUse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.acctions.Actions;
 import pl.coderslab.acctions.ActionsRepository;
@@ -56,9 +58,14 @@ public class ZlecController {
 
     @GetMapping("/addActions")
     public String addActions (Model model, HttpSession ses) {
+
+
+
+
         List<Actions> actionsEntities = actionsRepository.findAll();
         List<String> actions = actionsEntities.stream().map(Actions::getName).collect(Collectors.toList());
 
+        Zlec zlec = (Zlec) ses.getAttribute("zlecM");
 
         model.addAttribute("zlec", new Zlec());
         model.addAttribute("actions", actions);
@@ -67,23 +74,57 @@ public class ZlecController {
         return "addActions";
 
     }
-    @PostMapping("/addActions")
-    public  String addActions1(){
 
+
+    @RequestMapping(value = "/addActions" , method = RequestMethod. POST)
+    public void editCustomer(@RequestParam(value = "actions", required = false) String [] checkboxValue,
+                             HttpSession session,
+                             Model model)
+
+
+    {
+
+        Zlec zlec = (Zlec) session.getAttribute("zlecM");
+
+
+            System.out.println("checkbox is checked");
+
+        List<Actions> actionsSet = new ArrayList<>();
+            for (int i=0; i<checkboxValue.length; i++){
+                System.out.println(checkboxValue[i]);
+                System.out.println("n");
+
+
+
+            actionsSet.add(actionsRepository.findAllByName(checkboxValue[i]));
+
+
+            }
+            System.out.println(checkboxValue);
+
+            zlec.setActions(actionsSet);
+
+
+
+
+
+    }
+
+    /*@PostMapping("/addActions")
+    public  String addActions1(@ModelAttribute Actions actions,
+                               HttpSession session,
+                               Model model,
+                               BindingResult result){
+
+        model.addAttribute("actions", actions);
+        Zlec zlec = (Zlec) session.getAttribute("zlecM");
+
+        System.out.println(actions.toString());
         return"sucess";
 
     }
 
-
-    @ModelAttribute("actions")
-    public List<String> actionsList() {
-
-        List<String> actionsList = new ArrayList<>();
-        actionsList.add("asdasda");
-        return actionsList;
-
-    }
-
+*/
 
 
 

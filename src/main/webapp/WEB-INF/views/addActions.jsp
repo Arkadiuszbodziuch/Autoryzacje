@@ -21,9 +21,14 @@ DUpa
     <br><br>
 
 
-    <form:select path="actions" items="${actions}" >
+  <%--  <form:select
 
-    </form:select>
+             path="actions" items="${actions}" >
+    </form:select>--%>
+
+    <br><br>
+
+    <form:checkboxes items="${actions}" path="actions" />
 
 
     <input type="submit" value="Submit">

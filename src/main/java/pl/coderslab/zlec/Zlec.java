@@ -25,14 +25,10 @@ public class Zlec {
     private String numberFV;
     @ManyToOne
     private Car car;
-    @ElementCollection
-//    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-//    @JoinTable(name = "zlec_actions", joinColumns = @JoinColumn(name = "zlec_id"), inverseJoinColumns = @JoinColumn(name = "actions_id"))
-    private List<String> actions;
 
-    /*@ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "zlec_actions_price", joinColumns = @JoinColumn(name = "zlec_id"), inverseJoinColumns = @JoinColumn(name = "actions_id"))
-    private List<Price> prices;*/
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "zlec_actions", joinColumns = @JoinColumn(name = "zlec_id"), inverseJoinColumns = @JoinColumn(name = "actions_id"))
+    private List<Actions> actions;
 
     public Long getId() {
         return id;
@@ -66,14 +62,13 @@ public class Zlec {
         this.car = car;
     }
 
-    public List<String> getActions() {
+    public List<Actions> getActions() {
         return actions;
     }
 
-    public void setActions(List<String> actions) {
+    public void setActions(List<Actions> actions) {
         this.actions = actions;
     }
-
 
     @Override
     public String toString() {
