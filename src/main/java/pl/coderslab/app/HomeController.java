@@ -12,9 +12,13 @@ import pl.coderslab.app.user.User;
 import pl.coderslab.app.user.UserRepository;
 import pl.coderslab.app.user.UserService;
 import pl.coderslab.app.warehouse.WarehouseService;*/
+import pl.coderslab.car.CarRepository;
+import pl.coderslab.cfm.Cfm;
+import pl.coderslab.serwis.SerwisRepository;
 import pl.coderslab.user.User;
 import pl.coderslab.user.UserRepository;
 import pl.coderslab.user.UserService;
+import pl.coderslab.zlec.ZlecRepostiory;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -25,37 +29,44 @@ import java.util.List;
 @SessionAttributes("remoteUser")
 public class HomeController {
 
-   // private WarehouseService warehouseService;
-   // private OrderDAO orderDAO;
+
     private UserRepository userRepository;
     private UserService userService;
-    //private OrderRepository orderRepository;
+    private CarRepository carRepository;
+    private ZlecRepostiory zlecRepostiory;
+    private SerwisRepository serwisRepository;
 
-    public HomeController(UserRepository userRepository, UserService userService){
-          //  , OrderRepository orderRepository, OrderDAO orderDAO, WarehouseService warehouseService) {
+    public HomeController( SerwisRepository serwisRepository, UserRepository userRepository, UserService userService, CarRepository carRepository, ZlecRepostiory zlecRepostiory) {
+
         this.userRepository = userRepository;
         this.userService = userService;
-       // this.orderRepository = orderRepository;
-        //this.orderDAO = orderDAO;
-        //this.warehouseService = warehouseService;
+        this.zlecRepostiory = zlecRepostiory;
+        this.carRepository = carRepository;
+        this.serwisRepository=serwisRepository;
     }
 
-    @RequestMapping("/")
-    public String hello(Model model, HttpServletRequest request) {
 
-        /*List<Order> orderList = orderRepository.findAll();
-        List<Order> notFinishOrder = orderRepository.findAllByIsFinish(false);
-        List<Order> orderDoneList = orderRepository.findAllByIsFinish(false);
-        Order order = orderRepository.findFirstByIsFinishOrderByCreatedOnDesc(false);
-        int numberOfPartsNeeded = warehouseService.getNumberOfPartsNeeded();
-        model.addAttribute("numberOfPartsNeeded", numberOfPartsNeeded);
-        model.addAttribute("remoteUser", request.getRemoteUser());
-        model.addAttribute("orderSize", orderList.size());
-        model.addAttribute("notFinishOrderSize", notFinishOrder.size());
-        model.addAttribute("orderList", orderDoneList);
-        model.addAttribute("data",order);*/
+    @RequestMapping("/")
+    public String hello() {
+
 
         return "dashboard";
+    }
+
+    @PostMapping("/")
+    public String helloo (@ModelAttribute Model model){
+        Long cari = carRepository.count();
+        Long zleci = zlecRepostiory.count();
+        Long userei = userRepository.count();
+        Long serwi = serwisRepository.count();
+
+
+        model.addAttribute("cari",cari);
+        model.addAttribute("zleci", zleci);
+        model.addAttribute("userei", userei);
+        model.addAttribute("serwi",serwi);
+        return "dashboard";
+
     }
 
     @GetMapping("/mylogin")
