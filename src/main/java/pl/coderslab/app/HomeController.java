@@ -5,24 +5,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-/*import pl.coderslab.app.order.Order;
-import pl.coderslab.app.order.OrderDAO;
-import pl.coderslab.app.order.OrderRepository;
-import pl.coderslab.app.user.User;
-import pl.coderslab.app.user.UserRepository;
-import pl.coderslab.app.user.UserService;
-import pl.coderslab.app.warehouse.WarehouseService;*/
 import pl.coderslab.car.CarRepository;
-import pl.coderslab.cfm.Cfm;
 import pl.coderslab.serwis.SerwisRepository;
+import pl.coderslab.status.StatusRepository;
 import pl.coderslab.user.User;
 import pl.coderslab.user.UserRepository;
 import pl.coderslab.user.UserService;
 import pl.coderslab.zlec.ZlecRepostiory;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Controller
@@ -35,9 +25,16 @@ public class HomeController {
     private CarRepository carRepository;
     private ZlecRepostiory zlecRepostiory;
     private SerwisRepository serwisRepository;
+    private StatusRepository statusRepository;
 
-    public HomeController( SerwisRepository serwisRepository, UserRepository userRepository, UserService userService, CarRepository carRepository, ZlecRepostiory zlecRepostiory) {
+    public HomeController(SerwisRepository serwisRepository,
+                          UserRepository userRepository,
+                          UserService userService,
+                          CarRepository carRepository,
+                          ZlecRepostiory zlecRepostiory,
+                          StatusRepository statusRepository) {
 
+        this.statusRepository=statusRepository;
         this.userRepository = userRepository;
         this.userService = userService;
         this.zlecRepostiory = zlecRepostiory;
@@ -47,13 +44,26 @@ public class HomeController {
 
 
     @RequestMapping("/")
-    public String hello() {
+    public String hello(Model model) {
+        Long cari = carRepository.count();
+        Long zleci = zlecRepostiory.count();
+        Long userei = userRepository.count();
+        Long serwi = serwisRepository.count();
+        //Long stat= zlecRepostiory.findByStatus((long) 1);
+
+
+
+       // model.addAttribute("stat", stat);
+        model.addAttribute("cari",cari);
+        model.addAttribute("zleci", zleci);
+        model.addAttribute("userei", userei);
+        model.addAttribute("serwi",serwi);
 
 
         return "dashboard";
     }
 
-    @PostMapping("/")
+    /*@PostMapping("/")
     public String helloo (@ModelAttribute Model model){
         Long cari = carRepository.count();
         Long zleci = zlecRepostiory.count();
@@ -62,12 +72,13 @@ public class HomeController {
 
 
         model.addAttribute("cari",cari);
+        System.out.println(cari);
         model.addAttribute("zleci", zleci);
         model.addAttribute("userei", userei);
         model.addAttribute("serwi",serwi);
-        return "dashboard";
+        return "dashboard"*/;
 
-    }
+   // }
 
     @GetMapping("/mylogin")
     public String getLogin(Model model, @RequestParam(required = false) String username) {

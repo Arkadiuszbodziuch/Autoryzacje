@@ -9,6 +9,7 @@ import pl.coderslab.acctions.Actions;
 import pl.coderslab.acctions.ActionsRepository;
 import pl.coderslab.car.Car;
 import pl.coderslab.car.CarRepository;
+import pl.coderslab.status.StatusRepository;
 
 import javax.servlet.http.HttpSession;
 import java.util.*;
@@ -22,9 +23,15 @@ public class ZlecController {
     private ActionsRepository actionsRepository;
     private ZlecRepostiory zlecRepostiory;
     private CarRepository carRepository;
+    private StatusRepository statusRepository;
 
 
-    private ZlecController (ZlecRepostiory zlecRepostiory,CarRepository carRepository,ActionsRepository actionsRepository){
+    private ZlecController (ZlecRepostiory zlecRepostiory,
+                            CarRepository carRepository,
+                            ActionsRepository actionsRepository,
+                            StatusRepository statusRepository){
+
+        this.statusRepository=statusRepository;
         this.zlecRepostiory=zlecRepostiory;
         this.actionsRepository=actionsRepository;
         this.carRepository=carRepository;
@@ -47,10 +54,16 @@ public class ZlecController {
                            Model model) {
 
         Car car = carRepository.findByRegistrationNumber(string);
+/*
+        Status status=statusRepository.findByName("Dodane");
+*/
+
         if (car!=null){
 
             zlec.setCar(car);
+            /*zlec.setStatus(status);*/
             zlecRepostiory.save(zlec);
+
             model.addAttribute("zlecM", zlec);
         }
         return "redirect:/zlec/addActions";
