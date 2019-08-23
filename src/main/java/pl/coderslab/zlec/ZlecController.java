@@ -83,6 +83,8 @@ public class ZlecController {
         model.addAttribute("zlec", new Zlec());
         model.addAttribute("actions", actions);
 
+        zlecRepostiory.save(zlec);
+
 
         return "addActions";
 
@@ -90,7 +92,7 @@ public class ZlecController {
 
 
     @RequestMapping(value = "/addActions" , method = RequestMethod. POST)
-    public void editCustomer(@RequestParam(value = "actions", required = false) String [] checkboxValue,
+    public String editCustomer(@RequestParam(value = "actions", required = false) String [] checkboxValue,
                              HttpSession session,
                              Model model)
 
@@ -117,10 +119,11 @@ public class ZlecController {
 
             zlec.setActions(actionsSet);
 
+            zlecRepostiory.save(zlec);
 
 
 
-
+return "sucess";
     }
 
     /*@PostMapping("/addActions")

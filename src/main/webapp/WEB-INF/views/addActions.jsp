@@ -31,7 +31,7 @@ DUpa
     <form:checkboxes items="${actions}" path="actions" />
 
 
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" />
 </form:form>
 
 </form>
