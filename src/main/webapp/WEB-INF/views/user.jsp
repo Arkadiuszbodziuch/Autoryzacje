@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<<head>
+<head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,7 +26,6 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-
     <link href="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
@@ -40,7 +39,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -61,9 +60,9 @@
         <hr class="sidebar-divider">
 
         <!-- Heading -->
-        <div class="sidebar-heading">
+        <%--<div class="sidebar-heading">
             Interface
-        </div>
+        </div>--%>
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
@@ -92,9 +91,9 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Actions</h6>
                     <a class="collapse-item" href="/zlec/add">Order Add</a>
-                    <a class="collapse-item" href="utilities-color.html">Order All</a>
-                    <a class="collapse-item" href="utilities-border.html">Order Save</a>
-                    <a class="collapse-item" href="utilities-animation.html">Order Finish</a>
+                    <a class="collapse-item" href="/404">Order All</a>
+                    <a class="collapse-item" href="/404">Order Save</a>
+                    <a class="collapse-item" href="/404">Order Finish</a>
                 </div>
             </div>
         </li>

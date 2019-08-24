@@ -39,7 +39,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -60,9 +60,9 @@
         <hr class="sidebar-divider">
 
         <!-- Heading -->
-        <div class="sidebar-heading">
+        <%--<div class="sidebar-heading">
             Interface
-        </div>
+        </div>--%>
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
@@ -91,9 +91,9 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Actions</h6>
                     <a class="collapse-item" href="/zlec/add">Order Add</a>
-                    <a class="collapse-item" href="utilities-color.html">Order All</a>
-                    <a class="collapse-item" href="utilities-border.html">Order Save</a>
-                    <a class="collapse-item" href="utilities-animation.html">Order Finish</a>
+                    <a class="collapse-item" href="/404">Order All</a>
+                    <a class="collapse-item" href="/404">Order Save</a>
+                    <a class="collapse-item" href="/404">Order Finish</a>
                 </div>
             </div>
         </li>
@@ -147,6 +147,7 @@
         </div>
 
     </ul>
+    <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -354,7 +355,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create Car</h1>
                             </div>
-<form:form method="post" modelAttribute="car">
+                                    <form:form method="post" modelAttribute="car">
 
 
 
@@ -391,7 +392,7 @@
                             <input style="margin-top: 10px" value="submit" type="submit" class="btn btn btn-primary btn-block"></input>
 
 
-</form:form>
+                                    </form:form>
                             <hr>
 
 

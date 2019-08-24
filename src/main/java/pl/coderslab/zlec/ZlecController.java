@@ -123,7 +123,7 @@ public class ZlecController {
 
 
 
-return "sucess";
+return "redirect:/";
     }
 
     /*@PostMapping("/addActions")
