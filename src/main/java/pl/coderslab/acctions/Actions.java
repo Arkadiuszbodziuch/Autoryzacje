@@ -18,8 +18,7 @@ public class Actions {
     @ManyToMany
     @JoinColumn(name = "id", nullable = false)
     private List<Zlec> zlec;
-    private double part_price;
-    private double service_price;
+
 
     public Long getId() {
         return id;
@@ -43,22 +42,6 @@ public class Actions {
 
     public void setZlec(List<Zlec> zlec) {
         this.zlec = zlec;
-    }
-
-    public double getPart_price() {
-        return part_price;
-    }
-
-    public void setPart_price(double part_price) {
-        this.part_price = part_price;
-    }
-
-    public double getService_price() {
-        return service_price;
-    }
-
-    public void setService_price(double service_price) {
-        this.service_price = service_price;
     }
 
     @Override
