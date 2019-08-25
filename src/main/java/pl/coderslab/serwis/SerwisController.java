@@ -22,15 +22,10 @@ public class SerwisController {
         return "serwis";
     }
 
-/*    @RequestMapping(value = "/addForm", method = RequestMethod.POST)
-    public String add (@ModelAttribute User user){
-         userRepository.save(user);
-         return "redirect:all";
-    }*/
 
     @PostMapping("/add")
     public String add(@ModelAttribute @Valid Serwis serwis, BindingResult result) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "serwis";
         }
         //user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -48,13 +43,12 @@ public class SerwisController {
 
     @PostMapping("/edit/{id}")
     public String updateUser(@ModelAttribute @Valid Serwis serwis, BindingResult result) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "serwis";
         }
         serwisRepository.save(serwis);
         return "redirect:../all";
     }
-
 
 
     @ModelAttribute
@@ -64,8 +58,7 @@ public class SerwisController {
 
     @GetMapping("/all")
     public String all(Model model) {
-//        List<User> users = userRepository.findAll();
-//        model.addAttribute("users", users);
+
         return "serwisList";
     }
 
@@ -75,7 +68,6 @@ public class SerwisController {
         serwisRepository.deleteById(id);
         return "redirect:../all";
     }
-
 
 
 }

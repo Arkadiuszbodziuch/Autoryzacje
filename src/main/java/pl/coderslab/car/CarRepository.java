@@ -7,5 +7,7 @@ public interface CarRepository extends JpaRepository <Car, Long> {
 
 Car findByRegistrationNumber (String registraionNumber);
 
+Car findAllByEnabled (int enabled);
+
 
 }

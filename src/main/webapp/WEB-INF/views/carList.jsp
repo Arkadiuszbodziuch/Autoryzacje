@@ -354,14 +354,21 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <tr>
-                                    <th>id</th>
+                            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length">
+                                <label></label>
+                            </div></div><div class="col-sm-12 col-md-6">
+                                <div id="dataTable_filter" class="dataTables_filter">
+                                    <label>Search:<input id='myInput' onkeyup='searchTable()' type='text'>
+
+                                    </label></div></div></div><div class="row"><div class="col-sm-12">
+                                <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width:1000px">
+
+                                <th>id</th>
                                     <th>Registration Number</th>
                                     <th>VIN</th>
                                     <th>brand</th>
                                     <th>model</th>
-                                    <th>course</th>
+                                    <th style="size: 111px">course</th>
                                     <th>enabled</th>
                                 </tr>
                                 <c:forEach var="car" items="${cars}">
@@ -371,7 +378,7 @@
                                     <td>${car.vin}</td>
                                     <td>${car.brand}</td>
                                     <td>${car.model}</td>
-                                    <td>${car.course}</td>
+                                    <td>${car.course} km</td>
                                     <td>${car.enabled}</td>
                                     <td><a href="delete/${car.id}">Delete</a> </td>
                                     <td><a href="edit/${car.id}">Edit</a> </td>
@@ -379,13 +386,15 @@
                                 </c:forEach>
 
 
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                                </table></div></div><div class="row">
+                                <div class="col-sm-12 col-md-5"><div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">
+                                </div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                            </div>
+                            </div>
+                            </div>
 
-            </div>
+
+                            </div>
             <!-- /.container-fluid -->
 
         </div>
@@ -430,6 +439,10 @@
         </div>
     </div>
 </div>
+
+
+<script src="/resources/js/search.js"></script>
+
 
 <!-- Bootstrap core JavaScript-->
 <script src="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/vendor/jquery/jquery.min.js"></script>

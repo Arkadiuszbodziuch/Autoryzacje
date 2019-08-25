@@ -91,7 +91,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Actions</h6>
                     <a class="collapse-item" href="/zlec/add">Order Add</a>
-                    <a class="collapse-item" href="/404">Order All</a>
+                    <a class="collapse-item" href="/zlec/all">Order All</a>
                     <a class="collapse-item" href="/404">Order Save</a>
                     <a class="collapse-item" href="/404">Order Finish</a>
                 </div>
@@ -358,7 +358,7 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Liczba Zleceń</div>
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Number of all orders</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><c:out value="${zleci}"/></div>
                                     </div>
                                     <div class="col-auto">
@@ -375,8 +375,8 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Liczba zleceń otwartych</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Number of all open orders</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><c:out value="${zleci}"/></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -392,10 +392,10 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Liczba zlecń odrzuconych</div>
+                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Number of all rejected orders</div>
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto">
-                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">0</div>
                                             </div>
                                             <div class="col">
 
@@ -416,7 +416,8 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Liczba Aut w obsłudze</div>
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            Number of Cars in service</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><c:out value="${cari}"/></div>
                                     </div>
                                     <div class="col-auto">

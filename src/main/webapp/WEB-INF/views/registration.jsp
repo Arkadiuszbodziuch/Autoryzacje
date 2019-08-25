@@ -16,7 +16,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>APUD</title>
+    <title>APUD - Register</title>
 
     <!-- Custom fonts for this template-->
     <link href="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -36,13 +36,13 @@
         <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                <div class="col-lg-5 d-none d-lg-block "><img src="/resources/pic/APUD.png" class="image"></div>
                 <div class="col-lg-7">
                     <div class="p-5">
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                         </div>
-                        <form class="user">
+                        <form class="user" onsubmit="return validate()">
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <form:input path="lastName" type="text" name="lastName" class="form-control"
@@ -56,20 +56,22 @@
                                     <form:errors path="firstName" cssClass="error" element="div"/>                                </div>
                             </div>
                             <div class="form-group">
-                                <form:input path="email" type="text" name="email" class="form-control" id="exampleInputEmail1"
+                                <form:input path="email" type="email" name="email" class="form-control" id="exampleInputEmail1"
                                             aria-describedby="emailHelp" placeholder="Email"/>
                                 <form:errors path="email" cssClass="error" element="div"/>
                                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.
                                 </small>                         </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
+
+
                                     <form:input path="password" type="password" name="password" class="form-control"
                                                 id="exampleInputPassword1" placeholder="Password"/>
                                     <form:errors path="password" cssClass="error" element="div"/>
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+                                    <input type="password" class="form-control form-control-user" id="confirm_password" placeholder="Repeat Password">
                                 </div>
                             </div>
                             <button style="margin-top: 10px" type="submit" class="btn btn btn-primary btn-block">Submit</button>
@@ -101,6 +103,7 @@
 <script src="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
+<script src="/resources/js/validate.js"></script>
 <script src="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/js/sb-admin-2.min.js"></script>
 
 

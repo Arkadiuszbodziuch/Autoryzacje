@@ -91,7 +91,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Actions</h6>
                     <a class="collapse-item" href="/zlec/add">Order Add</a>
-                    <a class="collapse-item" href="/404">Order All</a>
+                    <a class="collapse-item" href="/zlec/all">Order All</a>
                     <a class="collapse-item" href="/404">Order Save</a>
                     <a class="collapse-item" href="/404">Order Finish</a>
                 </div>

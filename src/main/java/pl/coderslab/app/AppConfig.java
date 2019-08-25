@@ -36,7 +36,6 @@ import java.util.Locale;
 public class AppConfig extends WebMvcConfigurerAdapter {
 
 
-
     @Autowired
     private Environment env;
 
@@ -70,11 +69,12 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 //        return new AuthorConverter();
 //    }
 
-    @Bean(name="localeResolver")
+    @Bean(name = "localeResolver")
     public LocaleContextResolver getLocaleContextResolver() {
         SessionLocaleResolver localeResolver = new SessionLocaleResolver();
-        localeResolver.setDefaultLocale(new Locale("pl","PL"));
-        return localeResolver; }
+        localeResolver.setDefaultLocale(new Locale("pl", "PL"));
+        return localeResolver;
+    }
 
     @Bean
     public Validator validator() {
@@ -82,6 +82,12 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder (){
-        return  new BCryptPasswordEncoder();}
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
     }
+
+
+    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+    }
+}

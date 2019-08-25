@@ -14,7 +14,6 @@ import pl.coderslab.user.UserService;
 import pl.coderslab.zlec.ZlecRepostiory;
 
 
-
 @Controller
 @SessionAttributes("remoteUser")
 public class HomeController {
@@ -34,12 +33,12 @@ public class HomeController {
                           ZlecRepostiory zlecRepostiory,
                           StatusRepository statusRepository) {
 
-        this.statusRepository=statusRepository;
+        this.statusRepository = statusRepository;
         this.userRepository = userRepository;
         this.userService = userService;
         this.zlecRepostiory = zlecRepostiory;
         this.carRepository = carRepository;
-        this.serwisRepository=serwisRepository;
+        this.serwisRepository = serwisRepository;
     }
 
 
@@ -49,36 +48,17 @@ public class HomeController {
         Long zleci = zlecRepostiory.count();
         Long userei = userRepository.count();
         Long serwi = serwisRepository.count();
-        //Long stat= zlecRepostiory.findByStatus((long) 1);
 
 
-
-       // model.addAttribute("stat", stat);
-        model.addAttribute("cari",cari);
+        model.addAttribute("cari", cari);
         model.addAttribute("zleci", zleci);
         model.addAttribute("userei", userei);
-        model.addAttribute("serwi",serwi);
+        model.addAttribute("serwi", serwi);
 
 
         return "dashboard";
     }
 
-    /*@PostMapping("/")
-    public String helloo (@ModelAttribute Model model){
-        Long cari = carRepository.count();
-        Long zleci = zlecRepostiory.count();
-        Long userei = userRepository.count();
-        Long serwi = serwisRepository.count();
-
-
-        model.addAttribute("cari",cari);
-        System.out.println(cari);
-        model.addAttribute("zleci", zleci);
-        model.addAttribute("userei", userei);
-        model.addAttribute("serwi",serwi);
-        return "dashboard"*/;
-
-   // }
 
     @GetMapping("/mylogin")
     public String getLogin(Model model, @RequestParam(required = false) String username) {
@@ -89,7 +69,7 @@ public class HomeController {
     }
 
     @RequestMapping("/404")
-    public String error404 () {
+    public String error404() {
 
         return "404";
     }
@@ -116,7 +96,6 @@ public class HomeController {
         model.addAttribute("username", user.getFirstName());
         return "redirect:/mylogin?success";
     }
-
 
 
 }

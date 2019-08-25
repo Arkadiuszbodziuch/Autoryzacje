@@ -23,22 +23,61 @@ public class Serwis {
     @ColumnDefault("1")
     private int enabled;
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-    public String getStreet() { return street; }
-    public void setStreet(String street) { this.street = street; }
-    public String getCity() { return city; }
-    public void setCity(String city) { this.city = city; }
-    public String getPostcode() { return postcode; }
-    public void setPostcode(String postcode) { this.postcode = postcode; }
-    public Long getNip() { return nip; }
-    public void setNip(Long nip) { this.nip = nip; }
-    public int getEnabled() { return enabled; }
-    public void setEnabled(int enabled) { this.enabled = enabled; }
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
+    public Long getNip() {
+        return nip;
+    }
+
+    public void setNip(Long nip) {
+        this.nip = nip;
+    }
+
+    public int getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(int enabled) {
+        this.enabled = enabled;
+    }
 
 
 }

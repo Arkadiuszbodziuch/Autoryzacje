@@ -26,20 +26,20 @@ public class ZlecController {
     private StatusRepository statusRepository;
 
 
-    private ZlecController (ZlecRepostiory zlecRepostiory,
-                            CarRepository carRepository,
-                            ActionsRepository actionsRepository,
-                            StatusRepository statusRepository){
+    private ZlecController(ZlecRepostiory zlecRepostiory,
+                           CarRepository carRepository,
+                           ActionsRepository actionsRepository,
+                           StatusRepository statusRepository) {
 
-        this.statusRepository=statusRepository;
-        this.zlecRepostiory=zlecRepostiory;
-        this.actionsRepository=actionsRepository;
-        this.carRepository=carRepository;
+        this.statusRepository = statusRepository;
+        this.zlecRepostiory = zlecRepostiory;
+        this.actionsRepository = actionsRepository;
+        this.carRepository = carRepository;
     }
 
 
     @GetMapping("/add")
-    public String addZlec (Model model){
+    public String addZlec(Model model) {
 
 
         model.addAttribute("zlec", new Zlec());
@@ -48,17 +48,15 @@ public class ZlecController {
     }
 
 
-    @PostMapping ("/add")
-    public String addZlec (@ModelAttribute Zlec zlec,
-                           @RequestParam String string,
-                           Model model) {
+    @PostMapping("/add")
+    public String addZlec(@ModelAttribute Zlec zlec,
+                          @RequestParam String string,
+                          Model model) {
 
         Car car = carRepository.findByRegistrationNumber(string);
-/*
-        Status status=statusRepository.findByName("Dodane");
-*/
 
-        if (car!=null){
+
+        if (car != null) {
 
             zlec.setCar(car);
             /*zlec.setStatus(status);*/
@@ -70,9 +68,7 @@ public class ZlecController {
     }
 
     @GetMapping("/addActions")
-    public String addActions (Model model, HttpSession ses) {
-
-
+    public String addActions(Model model, HttpSession ses) {
 
 
         List<Actions> actionsEntities = actionsRepository.findAll();
@@ -91,61 +87,39 @@ public class ZlecController {
     }
 
 
-    @RequestMapping(value = "/addActions" , method = RequestMethod. POST)
-    public String editCustomer(@RequestParam(value = "actions", required = false) String [] checkboxValue,
-                             HttpSession session,
-                             Model model)
-
-
-    {
+    @RequestMapping(value = "/addActions", method = RequestMethod.POST)
+    public String editCustomer(@RequestParam(value = "actions", required = false) String[] checkboxValue,
+                               HttpSession session,
+                               Model model) {
 
         Zlec zlec = (Zlec) session.getAttribute("zlecM");
 
 
-            System.out.println("checkbox is checked");
+        System.out.println("checkbox is checked");
 
         List<Actions> actionsSet = new ArrayList<>();
-            for (int i=0; i<checkboxValue.length; i++){
-                System.out.println(checkboxValue[i]);
-                System.out.println("n");
-
+        for (int i = 0; i < checkboxValue.length; i++) {
+            System.out.println(checkboxValue[i]);
+            System.out.println("n");
 
 
             actionsSet.add(actionsRepository.findAllByName(checkboxValue[i]));
 
 
-            }
-            System.out.println(checkboxValue);
+        }
+        System.out.println(checkboxValue);
 
-            zlec.setActions(actionsSet);
+        zlec.setActions(actionsSet);
 
-            zlecRepostiory.save(zlec);
+        zlecRepostiory.save(zlec);
 
 
-
-return "redirect:/";
+        return "redirect:/";
     }
-
-    /*@PostMapping("/addActions")
-    public  String addActions1(@ModelAttribute Actions actions,
-                               HttpSession session,
-                               Model model,
-                               BindingResult result){
-
-        model.addAttribute("actions", actions);
-        Zlec zlec = (Zlec) session.getAttribute("zlecM");
-
-        System.out.println(actions.toString());
-        return"sucess";
-
-    }
-
-*/
-
 
 
     @GetMapping("/all")
-    public String getAllZlecs (Model model){
+    public String getAllZlecs(Model model) {
         List<Zlec> zlecList = zlecRepostiory.findAll();
         model.addAttribute("zlecList", zlecList);
         return "zlecList";

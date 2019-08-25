@@ -91,7 +91,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Actions</h6>
                     <a class="collapse-item" href="/zlec/add">Order Add</a>
-                    <a class="collapse-item" href="/404">Order All</a>
+                    <a class="collapse-item" href="/zlec/all">Order All</a>
                     <a class="collapse-item" href="/404">Order Save</a>
                     <a class="collapse-item" href="/404">Order Finish</a>
                 </div>
@@ -353,9 +353,21 @@
                         <h6 class="m-0 font-weight-bold text-primary">Car List & Info</h6>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <tr>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length">
+                                    <label></label>
+                                </div></div><div class="col-sm-12 col-md-6">
+                                    <div id="dataTable_filter" class="dataTables_filter">
+                                        <label>Search:<input id='myInput' onkeyup='searchTable()' type='text'>
+
+                                        </label></div></div></div><div class="row"><div class="col-sm-12">
+                                    <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width:750px">
+
+
+
+
+                                        <tr role="row"  >
                                     <th>id</th>
                                     <th>name</th>
                                     <th>street</th>
@@ -381,8 +393,18 @@
                                 </c:forEach>
 
 
-                                </tbody>
-                            </table>
+                            </table></div></div><div class="row">
+                    <div class="col-sm-12 col-md-5"><div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">
+                    </div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                </div>
+                </div>
+                </div>
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
                         </div>
                     </div>
                 </div>
@@ -432,6 +454,9 @@
         </div>
     </div>
 </div>
+
+<script src="/resources/js/search.js"></script>
+
 
 <!-- Bootstrap core JavaScript-->
 <script src="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/vendor/jquery/jquery.min.js"></script>

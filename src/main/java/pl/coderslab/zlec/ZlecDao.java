@@ -24,8 +24,5 @@ public class ZlecDao {
         return entityManager.find(Zlec.class, id);
     }
 
-/*    public String addZlec (String string ){
-        ZlecController.class.getMethods().
-    }*/
 
 }

@@ -16,7 +16,6 @@ public class Price {
     private double sum;
 
 
-
     public Long getId() {
         return id;
     }
@@ -46,7 +45,7 @@ public class Price {
     }
 
     public void setSum(double sum) {
-        this.sum = priceItems+priceUse;
+        this.sum = priceItems + priceUse;
     }
 
     @Override
