@@ -5,7 +5,7 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
     <persistence-unit name="persistence">
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://remotemysql.com:3306/Qra6NR535w"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://remotemysql.com:3306/Qra6NR535w?reconnect=true"/>
             <property name="javax.persistence.jdbc.user" value="Qra6NR535w"/>
             <property name="javax.persistence.jdbc.password" value="ODGauCWPA0"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
