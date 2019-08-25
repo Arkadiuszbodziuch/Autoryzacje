@@ -58,6 +58,7 @@ public class ZlecController {
 
         if (car != null) {
 
+
             zlec.setCar(car);
             /*zlec.setStatus(status);*/
             zlecRepostiory.save(zlec);
@@ -122,6 +123,8 @@ public class ZlecController {
     public String getAllZlecs(Model model) {
         List<Zlec> zlecList = zlecRepostiory.findAll();
         model.addAttribute("zlecList", zlecList);
+
+
         return "zlecList";
     }
 
