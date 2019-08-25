@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 public class CreatePassword {
     public static void main(String[] args) {
         try (Connection conn = DriverManager.getConnection(
-                "remotemysql.com",
+                "jdbc:mysql://remotemysql.com:3306/Qra6NR535w",
                 "Qra6NR535w",
                 "ODGauCWPA0")) {
             String sql = "update tweeter_user set password=?";

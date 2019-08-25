@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 public class DataSource extends BasicDataSource {
     public DataSource() {
         setDriverClassName("com.mysql.cj.jdbc.Driver");
-        setUrl("jdbc:mysql://localhost:3306/Platform?serverTimezone=UTC");
-        setUsername("root");
-        setPassword("zaq12wsx");
+        setUrl("jdbc:mysql://remotemysql.com:3306/Qra6NR535w");
+        setUsername("Qra6NR535w");
+        setPassword("ODGauCWPA0");
     }
 }
